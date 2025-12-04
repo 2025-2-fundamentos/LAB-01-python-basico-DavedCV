@@ -20,3 +20,15 @@ def pregunta_10():
 
 
     """
+    with open("files/input/data.csv", "r") as f:
+        data = f.readlines()
+    result = []
+    for line in data:
+        cols = line.strip().split("\t")
+        letter = cols[0]
+        col4 = cols[3]
+        col5 = cols[4]
+        count_col4 = len(col4.split(","))
+        count_col5 = len(col5.split(","))
+        result.append((letter, count_col4, count_col5))
+    return result

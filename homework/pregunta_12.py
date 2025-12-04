@@ -15,3 +15,17 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    with open("files/input/data.csv", "r") as f:
+        data = f.readlines()
+    sums = {}
+    for line in data:
+        cols = line.strip().split("\t")
+        letter = cols[0]
+        col5 = cols[4]
+        pairs = col5.split(",")
+        row_sum = 0
+        for pair in pairs:
+            value = int(pair.split(":")[1])
+            row_sum += value
+        sums[letter] = sums.get(letter, 0) + row_sum
+    return sums
